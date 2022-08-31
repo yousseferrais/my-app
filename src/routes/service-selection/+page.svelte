@@ -2,7 +2,10 @@
   let budget = 50;
 </script>
 
-<form class="flex flex-col w-max mx-auto" action="#">
+<form
+  class="flex flex-col w-max mx-auto border-2 mt-52 gap-2 px-2 py-1 opacity-60 bg"
+  action="#"
+>
   <div>
     <label for="">Sélectionner le service désiré : </label>
     <select name="service" id="service">

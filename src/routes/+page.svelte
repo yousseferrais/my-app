@@ -8,7 +8,10 @@
     href="/sign-in">Connexion</a
   >
 </nav>
-<main>
+<main
+  style="background-image:url(../images/fond.webp) ;"
+  class=" bg-cover flex-1"
+>
   <ul class="mt-20 px-20 flex flex-col gap-4">
     <li>Créer un compte</li>
     <li>Sélectionner le service désiré</li>

@@ -12,7 +12,7 @@
   <span
     >{firstName}
     {lastName} peut être votre {service}
-    {date} pour {price} dinars</span
+    {date} pour {price} dinars.</span
   >
   <img src={profilePicture} alt={firstName + " " + lastName} />
   <span>contacter {phoneNumber}</span>

@@ -1,5 +1,5 @@
 <form
-  class="flex w-full  max-w-lg  flex-col mx-auto gap-6 mt-48 bg-slate-600 p-2 rounded-md  "
+  class="flex w-full  max-w-lg  flex-col mx-auto gap-6 mt-48 bg-black  bg-opacity-30  p-2 rounded-md  "
   action="#"
 >
   <div class="flex gap-3">
