@@ -1,20 +1,26 @@
+<script lang="ts">
+  import Input from "$components/Input.svelte";
+</script>
+
 <form
-  class="grid grid-cols-2 mt-52 gap-y-2 gap-x-4 w-full max-w-xl border-2 mx-auto p-3 "
+  class="grid grid-cols-2 w-full text-xl max-w-xl  flex-col mx-auto gap-4 mt-48 bg-black bg-opacity-50 p-4 rounded-lg  "
   action="#"
 >
-  <label for="email">E-mail :</label>
-  <label for="mot">Mot de passe :</label>
-  <input
+  <Input
+    label="E-mail :"
     type="email"
-    id="email"
     name="email"
-    placeholder="flen@gmail.com"
-    required
+    placeHolder="flen.benfalten@gmail.com"
+    flexcol={true}
   />
-  <input type="password" id="mot" name="mot" required />
-
+  <Input
+    label="Mot de passe :"
+    type="password"
+    name="password"
+    flexcol={true}
+  />
   <input
-    class="col-span-2 border-2 w-max px-2 py-1 rounded-xl place-self-center bg-slate-400  hover:bg-red-900 hover:text-white"
+    class="border-2 col-span-2 w-max place-self-center border-neutral-800 px-5 self-center bg-white "
     type="submit"
     value="Se connecter"
   />

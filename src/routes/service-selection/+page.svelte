@@ -2,38 +2,42 @@
   let budget = 50;
 </script>
 
-<form class="flex flex-col w-max mx-auto" action="#">
-  <div>
-    <label for="">Sélectionner le service désiré : </label>
+<form
+  class="flex flex-col text-xl w-max mx-auto gap-4 mt-48 bg-black bg-opacity-50 p-4 rounded-lg  "
+  action="#"
+>
+  <div class="flex gap-4 w-full justify-between">
+    <label class=" text-white" for="">Service désiré :</label>
     <select name="service" id="service">
       <option value="" disabled selected hidden />
-      <option value="plumbing">Plomberie</option>
-      <option value="gardening">Jardinage</option>
-      <option value="electricity">Electricité</option>
       <option value="baby-sitting">Baby-sitting</option>
+      <option value="electricity">Electricité</option>
+      <option value="gardening">Jardinage</option>
       <option value="housework">Ménage</option>
-
-      <option value="private lesson">Cours particulier</option>
+      <option value="plumbing">Plomberie</option>
+      <option value="private_lessons">Cours particulier</option>
     </select>
   </div>
-  <div>
-    <label for="budget">Indiquer votre budget : </label>
+  <div class="flex gap-4 w-full justify-between">
+    <label class=" text-white" for="budget">Budget :</label>
     <input type="range" min="20" max="150" bind:value={budget} />
-    <input
-      class="text-right w-16 "
-      id="budget"
-      type="number"
-      bind:value={budget}
-    />
-    <span>DT</span>
+    <div>
+      <input
+        class="text-right w-16 "
+        id="budget"
+        type="number"
+        bind:value={budget}
+      />
+      <span class="text-white">DT</span>
+    </div>
   </div>
-  <div>
-    <label for="date">Indiquer la date : </label>
+  <div class="flex gap-4 w-full justify-between">
+    <label class=" text-white" for="date">Date :</label>
     <input id="date" type="date" name="date" />
   </div>
 
-  <div>
-    <label for="location">Adresse</label>
+  <div class="flex gap-4 w-full justify-between">
+    <label class=" text-white" for="location">Adresse :</label>
     <input class="border" type="text" id="location" name="location" required />
   </div>
   <input class="self-center" type="submit" value="Publier" />
