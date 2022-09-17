@@ -1,18 +1,25 @@
 <script lang="ts">
-  export let flexcol = false;
+  export let isLarge = false;
   export let label: string;
+  export let maxlength: number | null = null;
   export let name: string;
+  export let pattern: string | null = null;
+  export let required = true;
   export let type: string;
+  export let value: string | null = null;
 </script>
 
-<div class="flex gap-1 {flexcol ? 'flex-col' : 'mt-2'}">
-  <label for={name} class="block mb-2 font-bold text-gray-700">{label}</label>
+<div class="flex gap-1 flex-col" class:col-span-2={isLarge}>
+  <label for={name} class="font-bold">{label}</label>
   <input
-    {type}
-    id={name}
+    {maxlength}
     {name}
-    required
+    {pattern}
+    {required}
+    {type}
+    {value}
+    class="w-full px-3 py-2 leading-tight border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+    id={name}
     placeholder={label}
-    class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
   />
 </div>

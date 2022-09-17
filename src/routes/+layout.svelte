@@ -19,6 +19,6 @@
     >
   </nav>
 </header>
-<main  class="flex-1 ">
+<main class="flex-1 flex justify-center items-center">
   <slot />
 </main>

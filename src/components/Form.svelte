@@ -1,12 +1,10 @@
 <script lang="ts">
-  export let action = "#";
   export let submitButton: string;
 </script>
 
 <form
-  class="px-8 pt-6 pb-8 grid grid-cols-2 w-full text-xl max-w-2xl bg-white rounded-lg mx-auto gap-4 mt-48"
+  class="px-8 pt-6 pb-8 grid grid-cols-2 w-full text-xl max-w-2xl bg-white text-gray-700 rounded-lg gap-4"
   method="POST"
-  {action}
 >
   <slot />
   <input

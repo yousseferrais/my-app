@@ -3,8 +3,8 @@
 </script>
 
 <Offer
-  firstName={"Adem"}
-  lastName={"Abed"}
+  firstname={"Adem"}
+  lastname={"Abed"}
   service={"plombier"}
   date={"mardi"}
   profilePicture={""}

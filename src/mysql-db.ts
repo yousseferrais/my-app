@@ -1,4 +1,4 @@
-import mysql from "mysql2/promise";
+import mysql from "mysql2";
 import {
   MYSQL_HOST,
   MYSQL_USERNAME,
@@ -7,25 +7,49 @@ import {
 } from "$env/static/private";
 import type { Customer } from "$models/Customer";
 
-const connection = await mysql.createConnection({
+const connection = mysql.createConnection({
   host: MYSQL_HOST,
   user: MYSQL_USERNAME,
   password: MYSQL_PASSWORD,
   database: MYSQL_DB,
+  dateStrings: true,
 });
 
-export const register = async (customer: Customer): Promise<void> => {
-  try {
-    connection.query(
-      "INSERT INTO customers (email, password, first_name, last_name, birth_date, gender, phone, address) VALUES ('y.e@g.c', 'abc', 'youssef', 'errais', '2000-03-19', 1, '23512089', '18 t');"
-    );
-  } catch {
-    console.log("failed");
-  }
+export const register = async (customer: Customer): Promise<boolean> => {
+  let err = false;
+  await connection
+    .promise()
+    .query("SELECT * FROM customers WHERE email = ?", customer.email)
+    .then(([rows, fields]) => {
+      if (rows.constructor === Array && rows.length) err = true;
+      else {
+        connection.query("INSERT INTO customers SET ?", customer);
+      }
+    })
+    .catch(console.log);
+  return err;
 };
-
-export const getPosts = async (): Promise<void> => {
-  console.log(
-    (await connection.query("SELECT * FROM customers WHERE email = '@g.c'"))[0]
-  );
+export const login = async (
+  email: string,
+  password: string
+): Promise<Customer | null> => {
+  let customer: Customer | null = null;
+  await connection
+    .promise()
+    .query("SELECT * FROM customers WHERE email = ? AND password = ?", [
+      email,
+      password,
+    ])
+    .then(([rows, fields]) => {
+      if (
+        rows.constructor === Array &&
+        rows.length &&
+        "customer_id" in rows[0]
+      ) {
+        const { customer_id, ...test } = rows[0];
+        customer = test as Customer;
+      }
+    })
+    .catch(console.log);
+  return customer;
 };

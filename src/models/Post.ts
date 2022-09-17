@@ -1,6 +1,6 @@
 export interface Post {
-  firstName: string;
-  lastName: string;
+  firstname: string;
+  lastname: string;
   service: string;
   date: string;
   profilePicture: string;
