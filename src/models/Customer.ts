@@ -1,21 +1,23 @@
 export interface Customer {
   address: string;
-  birthDate: string | null;
+  birthdate: string | null;
   email: string;
-  firstName: string;
+  firstname: string;
   gender: string | null;
-  lastName: string;
+  governorate: string;
+  lastname: string;
   password: string;
-  phone: string | null;
+  phone: string;
 }
 
 export const customerBuilder = (data: Partial<Customer>): Customer => ({
   address: "",
-  birthDate: "",
+  birthdate: "",
   email: "",
-  firstName: "",
+  firstname: "",
   gender: "",
-  lastName: "",
+  governorate: "",
+  lastname: "",
   password: "",
   phone: "",
   ...data,

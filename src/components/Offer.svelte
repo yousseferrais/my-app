@@ -1,6 +1,6 @@
 <script lang="ts">
-  export let firstName: string;
-  export let lastName: string;
+  export let firstname: string;
+  export let lastname: string;
   export let service: string;
   export let date: string;
   export let profilePicture: string;
@@ -10,10 +10,10 @@
 
 <article>
   <span
-    >{firstName}
-    {lastName} peut être votre {service}
+    >{firstname}
+    {lastname} peut être votre {service}
     {date} pour {price} dinars</span
   >
-  <img src={profilePicture} alt={firstName + " " + lastName} />
+  <img src={profilePicture} alt={firstname + " " + lastname} />
   <span>contacter {phoneNumber}</span>
 </article>
