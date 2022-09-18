@@ -1,6 +1,8 @@
-import type { RequestEvent } from "@sveltejs/kit";
+import { invalid, redirect, type RequestEvent } from "@sveltejs/kit";
 import { login } from "$src/mysql-db";
+import { user } from "$stores/user";
 import type { Customer } from "$models/Customer";
+import type { Agent } from "$models/Agent";
 
 export const actions = {
   default: async (event: RequestEvent) => {
@@ -8,10 +10,14 @@ export const actions = {
 
     const email = data.get("email");
     const password = data.get("password");
-    let customer: Customer | null = null;
+    let customer: null | Customer | Agent = null;
     if (email && password) {
       customer = await login(email.toString(), password.toString());
     }
-    if (customer) console.log(customer);
+    if (customer == null) return invalid(400, { incorrectCredentials: true });
+    user.set(customer);
+    user.subscribe((value) => {
+      console.log(value);
+    });
   },
 };

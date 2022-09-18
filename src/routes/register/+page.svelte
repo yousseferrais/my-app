@@ -6,24 +6,11 @@
 </script>
 
 <Form submitButton="S'inscrire">
-  <Input
-    value={form?.firstname ?? ""}
-    label="Prénom"
-    type="text"
-    name="firstname"
-    maxlength={32}
-  />
-  <Input
-    value={form?.lastname ?? ""}
-    label="Nom"
-    type="text"
-    name="lastname"
-    maxlength={32}
-  />
+  <Input label="Prénom" type="text" name="firstname" maxlength={32} />
+  <Input label="Nom" type="text" name="lastname" maxlength={32} />
   <div class="flex flex-col gap-1 ">
     <label for="gender" class="font-bold"> Je suis </label>
     <select
-      value={form?.gender ?? ""}
       name="gender"
       id="gender"
       class="w-full px-3 py-2 leading-tight bg-white border rounded shadow  focus:outline-none focus:shadow-outline"
@@ -34,24 +21,22 @@
     </select>
   </div>
   <Input
-    value={form?.birthdate ?? ""}
-    label="Date de naissance"
-    type="date"
-    name="birthdate"
-    required={false}
+    label="Numéro de téléphone"
+    type="text"
+    name="phone"
+    maxlength={8}
+    pattern="[0-9]+"
   />
   <Input
-    value={form?.address ?? ""}
     label="Adresse"
     type="text"
     name="address"
     maxlength={64}
     isLarge={true}
   />
-  <div class="flex flex-col gap-1 ">
+  <!-- <div class="flex flex-col gap-1 ">
     <label for="governorate" class="font-bold">Gouvernorat</label>
     <select
-      value={form?.governorate ?? ""}
       name="governorate"
       id="governorate"
       class="w-full px-3 py-2 leading-tight bg-white border rounded shadow  focus:outline-none focus:shadow-outline"
@@ -82,26 +67,14 @@
       <option value="Tunis">Tunis</option>
       <option value="Zaghouan">Zaghouan</option>
     </select>
-  </div>
+  </div> -->
   <Input
-    value={form?.phone ?? ""}
-    label="Numéro de téléphone"
-    type="text"
-    name="phone"
-    maxlength={8}
-    pattern="[0-9]+"
-  />
-  <Input
-    value={form?.email ?? ""}
     label="E-mail"
     type="email"
     name="email"
     maxlength={64}
     isLarge={true}
   />
-  {#if form?.usedEmail}<p class="text-red-500 col-span-2">
-      Email déja utilisé
-    </p>{/if}
   <Input label="Mot de passe" type="password" name="password" maxlength={32} />
   <Input
     label="Confirmer le mot de passe"
@@ -109,7 +82,12 @@
     name="passwordConfirmation"
     maxlength={32}
   />
-  {#if form?.unmatchingPassword}<p class="text-red-500 col-span-2">
+  <p class="text-red-500 col-span-2">
+    {#if form?.usedEmail}
+      Email déja utilisé
+    {/if}
+    {#if form?.unmatchingPassword}
       Mot de passe incorrect
-    </p>{/if}
+    {/if}
+  </p>
 </Form>

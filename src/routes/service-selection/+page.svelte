@@ -1,14 +1,18 @@
 <script lang="ts">
+  import Form from "$components/Form.svelte";
+  import Input from "$components/Input.svelte";
+  import { user } from "$stores/user";
   let budget = 50;
 </script>
 
-<form
-  class="flex flex-col text-xl w-max mx-auto gap-4 mt-48 bg-black bg-opacity-50 p-4 rounded-lg  "
-  action="#"
->
-  <div class="flex gap-4 w-full justify-between">
-    <label class=" text-white" for="">Service désiré :</label>
-    <select name="service" id="service">
+<Form submitButton="Publier">
+  <div class="flex flex-col gap-1 ">
+    <label class=" font-bold" for="">Service désiré :</label>
+    <select
+      name="service"
+      id="service"
+      class="w-full px-3 py-2 leading-tight bg-white border rounded shadow  focus:outline-none focus:shadow-outline"
+    >
       <option value="" disabled selected hidden />
       <option value="baby-sitting">Baby-sitting</option>
       <option value="electricity">Electricité</option>
@@ -18,27 +22,33 @@
       <option value="private_lessons">Cours particulier</option>
     </select>
   </div>
-  <div class="flex gap-4 w-full justify-between">
-    <label class=" text-white" for="budget">Budget :</label>
-    <input type="range" min="20" max="150" bind:value={budget} />
-    <div>
+  <Input label="Date" name="date" type="date" />
+  <Input
+    label="Adresse"
+    type="text"
+    name="address"
+    maxlength={64}
+    isLarge={true}
+  />
+  <div class="flex flex-col gap-1 col-span-2">
+    <label class=" font-bold" for="budget">Budget :</label>
+    <div class="flex gap-2">
       <input
-        class="text-right w-16 "
+        type="range"
+        min="20"
+        max="150"
+        bind:value={budget}
+        class="flex-1"
+      />
+      <input
+        class="text-right w-12 "
         id="budget"
-        type="number"
+        type="text"
         bind:value={budget}
       />
-      <span class="text-white">DT</span>
+      <span class="font-bold">DT</span>
     </div>
   </div>
-  <div class="flex gap-4 w-full justify-between">
-    <label class=" text-white" for="date">Date :</label>
-    <input id="date" type="date" name="date" />
-  </div>
-
-  <div class="flex gap-4 w-full justify-between">
-    <label class=" text-white" for="location">Adresse :</label>
-    <input class="border" type="text" id="location" name="location" required />
-  </div>
-  <input class="self-center" type="submit" value="Publier" />
-</form>
+</Form>
+<span>Veuillez vous connecter</span>
+{$user}
