@@ -5,8 +5,7 @@
   export let name: string;
   export let pattern: string | null = null;
   export let required = true;
-  export let type: string;
-  export let value: string | null = null;
+  export let type = "text";
 </script>
 
 <div class="flex gap-1 flex-col" class:col-span-2={isLarge}>
@@ -17,7 +16,6 @@
     {pattern}
     {required}
     {type}
-    {value}
     class="w-full px-3 py-2 leading-tight border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
     id={name}
     placeholder={label}
