@@ -1,5 +1,5 @@
 import { invalid, redirect, type RequestEvent } from "@sveltejs/kit";
-import { register } from "$src/mysql-db";
+import { registerCustomer } from "$lib/mysql-db";
 import type { Customer } from "$models/Customer";
 
 export const actions = {
@@ -29,7 +29,7 @@ export const actions = {
       phone: phone ? phone.toString() : "",
     };
 
-    if (await register(customer, password.toString()))
+    if (await registerCustomer(customer, password.toString()))
       return invalid(400, {
         usedEmail: true,
       });

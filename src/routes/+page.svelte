@@ -1,15 +1,33 @@
 <script lang="ts">
+  import { user } from "$stores/user";
   import Input from "$components/Input.svelte";
-  import Form from "$components/Form.svelte";
+  import { enhance } from "$app/forms";
+  import type { ActionData } from "./$types";
+  export let form: ActionData;
 </script>
 
-<Form submitButton="Se connecter">
-  <Input label="E-mail" type="email" name="email" maxlength={64} />
-  <Input label="Mot de passe" type="password" name="password" maxlength={32} />
-</Form>
-<span
-  >Vous n’avez pas de compte ? <a
-    href="/register"
-    class="text-blue-500 underline">Inscrivez-vous</a
+{#if !$user}
+  <form
+    class="px-8 pt-6 pb-8 w-full flex flex-col text-xl max-w-2xl bg-white text-gray-700 rounded-lg gap-4"
+    method="POST"
+    use:enhance
   >
-</span>
+    <Input label="Adresse e-mail" type="email" name="email" maxlength={64} />
+    <input
+      class="col-span-2 w-max place-self-center px-16 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 focus:outline-none focus:shadow-outline"
+      type="submit"
+      value="Suivant"
+    />
+    {#if form?.unexistentEmail}
+      <span class="text-red-500 text-base">
+        Impossible de trouver votre compte. Veuillez réessayer.
+      </span>
+    {/if}
+  </form>
+  <span>
+    Vous n’avez pas de compte ? <a
+      href="/register"
+      class="text-blue-500 underline">Inscrivez-vous</a
+    >
+  </span>
+{/if}
