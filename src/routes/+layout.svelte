@@ -1,6 +1,5 @@
 <script lang="ts">
   import "../app.css";
-  import { user } from "$stores/user";
 </script>
 
 <header><a href="/">Home </a></header>
