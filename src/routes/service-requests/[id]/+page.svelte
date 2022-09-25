@@ -13,6 +13,7 @@
       <th class="px-5 py-3">Budget</th>
       <th class="px-5 py-3">Date</th>
       <th class="px-5 py-3">Adresse</th>
+      <th class="px-5 py-3">Annulation</th>
     </thead>
     <tbody>
       {#each data.services as service}
@@ -23,3 +24,4 @@
 {:else}
   <span>Vous n'avez rien encore publier</span>
 {/if}
+<a href="/service-selection">Créer une nouvelle demande</a>
