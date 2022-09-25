@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { user } from "$stores/user";
   import Input from "$components/Input.svelte";
   import { enhance } from "$app/forms";
   import type { ActionData } from "./$types";
