@@ -99,6 +99,7 @@
       {/if}
     </p>
   </Form>
+  <a href={"/service-requests/" + $user.id}>Consulter ses publications</a>
 {:else}
   Vous devez être connecté pour utiliser cette fonctionnalité
 {/if}

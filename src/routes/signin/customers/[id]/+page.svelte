@@ -12,8 +12,8 @@
 >
   {#if $user && "address" in $user}
     <span>Connexion réussie </span>
-    <a href={"/service-requests/" + $user.id}>Consulter ses</a>
-    <a href="/service-selection">Nouvelle demande</a>
+    <a href={"/service-requests/" + $user.id}>Consulter ses publications</a>
+    <a href="/service-selection">Créer un nouvelle demande</a>
   {:else}
     <span>Bienvenue</span>
     <span>{data.customer?.firstname} {data.customer?.lastname}</span>
