@@ -15,7 +15,7 @@ export const actions = {
 
     if (date && new Date(date.toString()).getTime() < new Date().getTime())
       return invalid(400, { datePassed: true });
-    const service: Service = {
+    const service: Partial<Service> = {
       address: address ? address.toString() : "",
       customerId: Number(clientId) ? Number(clientId) : 0,
       cost: Number(cost) ? Number(cost) : 0,
