@@ -159,7 +159,7 @@ export const getCustomerPassword = async (
   console.log(password);
   return password;
 };
-export const postService = async (service: Service): Promise<void> => {
+export const postService = async (service: Partial<Service>): Promise<void> => {
   await connection
     .promise()
     .query("INSERT INTO services SET ?", service)
