@@ -13,33 +13,37 @@
     <select
       name="gender"
       id="gender"
-      class="w-full px-3 py-2 leading-tight bg-white border rounded shadow  focus:outline-none focus:shadow-outline"
+      class="w-full px-3 py-2 leading-tight border rounded shadow bg-white focus:shadow-outline focus:border-blue-700 focus:ring-1 focus:ring-blue-700 focus:outline-none"
     >
       <option value="" disabled selected hidden>Une femme / Un homme</option>
       <option value="f">Une femme</option>
       <option value="m">Un homme</option>
     </select>
   </div>
-  <Input
-    label="Numéro de téléphone"
-    type="text"
-    name="phone"
-    maxlength={8}
-    pattern="[0-9]+"
-  />
-  <Input
-    label="Adresse"
-    type="text"
-    name="address"
-    maxlength={64}
-    isLarge={true}
-  />
-  <!-- <div class="flex flex-col gap-1 ">
+  <div class="flex flex-col gap-1 ">
+    <label class=" font-bold" for="type">Profession</label>
+    <select
+      class="w-full px-3 py-2 leading-tight border rounded bg-white shadow focus:shadow-outline focus:border-blue-700 focus:ring-1 focus:ring-blue-700 focus:outline-none"
+      id="type"
+      name="type"
+      required
+    >
+      <option value="" disabled selected hidden />
+      <option value="Baby-sitting">Baby-sitting</option>
+      <option value="Electricité">Electricité</option>
+      <option value="Jardinage">Jardinage</option>
+      <option value="Ménage</">Ménage</option>
+      <option value="Plomberie">Plomberie</option>
+      <option value="Cours particuliers">Cours particuliers</option>
+    </select>
+  </div>
+  <div class="flex flex-col gap-1 ">
     <label for="governorate" class="font-bold">Gouvernorat</label>
     <select
-      name="governorate"
+      class="w-full px-3 py-2 leading-tight border bg-white rounded shadow focus:shadow-outline focus:border-blue-700 focus:ring-1 focus:ring-blue-700 focus:outline-none"
       id="governorate"
-      class="w-full px-3 py-2 leading-tight bg-white border rounded shadow  focus:outline-none focus:shadow-outline"
+      name="governorate"
+      required
     >
       <option value="" disabled selected hidden>Gouvernorat</option>
       <option value="Ariana">Ariana</option>
@@ -67,7 +71,14 @@
       <option value="Tunis">Tunis</option>
       <option value="Zaghouan">Zaghouan</option>
     </select>
-  </div> -->
+  </div>
+  <Input
+    label="Numéro de téléphone"
+    type="text"
+    name="phone"
+    maxlength={8}
+    pattern="[0-9]+"
+  />
   <Input
     label="E-mail"
     type="email"

@@ -1,3 +1,3 @@
 export interface ActionData {
-  unexistentEmail: boolean = false;
+  datePassed: boolean = false;
 }
