@@ -23,11 +23,17 @@
         Impossible de trouver votre compte. Veuillez réessayer.
       </span>
     {/if}
+    <span>
+      Vous n’avez pas de compte ? <a
+        href="/register/customer"
+        class="text-blue-500 underline">Inscrivez-vous ici</a
+      >
+    </span>
   </form>
   <span>
-    Vous n’avez pas de compte ? <a
-      href="/register"
-      class="text-blue-500 underline">Inscrivez-vous</a
+    Êtes-vous un de nos agents ? <a
+      href="/register/agent"
+      class="text-blue-500 underline">Cliquez ici</a
     >
   </span>
 {/if}

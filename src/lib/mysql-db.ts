@@ -7,6 +7,7 @@ import {
 } from "$env/static/private";
 import type { Customer } from "$models/Customer";
 import type { Agent } from "$models/Agent";
+import type { Service } from "$models/Service";
 
 const connection = mysql.createConnection({
   host: MYSQL_HOST,
@@ -17,7 +18,7 @@ const connection = mysql.createConnection({
 });
 
 export const registerAgent = async (
-  agent: Agent,
+  agent: Partial<Agent>,
   password: string
 ): Promise<boolean> => {
   let err = false;
@@ -40,7 +41,7 @@ export const registerAgent = async (
   return err;
 };
 export const registerCustomer = async (
-  customer: Customer,
+  customer: Partial<Customer>,
   password: string
 ): Promise<boolean> => {
   let err = false;
@@ -98,7 +99,7 @@ export const getAgent = async (id: string): Promise<null | Agent> => {
   await connection
     .promise()
     .query(
-      "SELECT email, firstname, governorate, gender, lastname, phone, profession FROM agents WHERE id = ?",
+      "SELECT email, firstname, governorate, gender, id, lastname, phone, profession FROM agents WHERE id = ?",
       id
     )
     .then(([rows]) => {
@@ -111,21 +112,21 @@ export const getAgent = async (id: string): Promise<null | Agent> => {
   return user;
 };
 export const getCustomer = async (id: string): Promise<null | Customer> => {
-  let user: null | Customer = null;
+  let customer: null | Customer = null;
   await connection
     .promise()
     .query(
-      "SELECT address, email, firstname, gender, lastname, phone FROM customers WHERE id = ?",
+      "SELECT address, email, firstname, gender, id, lastname, phone FROM customers WHERE id = ?",
       id
     )
     .then(([rows]) => {
       if (rows.constructor === Array && rows.length) {
-        user = rows[0] as Customer;
+        customer = rows[0] as Customer;
       }
     })
     .catch(console.log);
-  console.log(user);
-  return user;
+  console.log(customer);
+  return customer;
 };
 
 export const getAgentPassword = async (id: string): Promise<null | string> => {
@@ -157,4 +158,33 @@ export const getCustomerPassword = async (
     .catch(console.log);
   console.log(password);
   return password;
+};
+export const postService = async (service: Service): Promise<void> => {
+  await connection
+    .promise()
+    .query("INSERT INTO services SET ?", service)
+    .then()
+    .catch(console.log);
+};
+export const getServices = async (id: string): Promise<Service[]> => {
+  let services: Service[] = [];
+  await connection
+    .promise()
+    .query(
+      "SELECT address, customerId, cost, date, governorate, id, type FROM services WHERE customerId = ? AND date > CURDATE() ORDER BY date",
+      id
+    )
+    .then(([rows]) => {
+      services = rows as Service[];
+    })
+    .catch(console.log);
+  return services;
+};
+
+export const deleteService = async (id: string): Promise<void> => {
+  await connection
+    .promise()
+    .query("DELETE FROM services WHERE id = ?", id)
+    .then()
+    .catch(console.log);
 };

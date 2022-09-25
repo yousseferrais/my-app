@@ -3,6 +3,7 @@ export interface Agent {
   firstname: string;
   gender: "m" | "f" | null;
   governorate: string;
+  id: number;
   lastname: string;
   phone: string;
   profession: string;
@@ -13,6 +14,7 @@ export const agentBuilder = (data: Partial<Agent>): Agent => ({
   firstname: "",
   gender: null,
   governorate: "",
+  id: 0,
   lastname: "",
   phone: "",
   profession: "",

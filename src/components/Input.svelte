@@ -16,7 +16,7 @@
     {pattern}
     {required}
     {type}
-    class="w-full px-3 py-2 leading-tight border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+    class="w-full px-3 py-2 leading-tight border rounded shadow appearance-none focus:shadow-outline focus:border-blue-700 focus:ring-1 focus:ring-blue-700 focus:outline-none"
     id={name}
     placeholder={label}
   />
